@@ -135,12 +135,21 @@ def _render_xu_ly_docs() -> None:
     render_error_code_accordion(_XLSX_PATH, session_prefix="ec_fptplay")
 
 
-def render_xu_ly_su_co(data: list[dict], keyword: str = "") -> None:
-    rows = [r for r in data if r["folder"] == "Xử lý sự cố"]
-    file_count = (
-        sum(1 for f in os.listdir(_XU_LY_DIR) if os.path.splitext(f)[1].lower() in _SUPPORTED)
-        if os.path.isdir(_XU_LY_DIR) else 0
-    )
-    render_section_header("🔧", "Xử lý sự cố", len(rows) + file_count)
-    render_expander_list(rows, keyword, show_empty=bool(rows))
-    _render_xu_ly_docs()
+def render_xu_ly_su_co(data, kw=""):
+    st.markdown("### 🔧 Phân hệ Xử lý sự cố & Mã lỗi")
+    
+    # Lọc lấy riêng dữ liệu thuộc folder Xử lý sự cố từ file Excel
+    df_su_co = [r for r in data if r.get("folder") == "Xử lý sự cố"]
+    
+    # TÍNH TOÁN LỌC THEO TỪ KHÓA TÌM KIẾM (Đồng bộ kw tổng)
+    if kw:
+        kw_lower = kw.lower().strip()
+        # Duyệt qua và lọc nếu từ khóa xuất hiện trong Mã lỗi, Tên lỗi hoặc Hướng xử lý
+        df_su_co = [
+            r for r in df_su_co 
+            if kw_lower in str(r.get("ten", "")).lower() 
+            or kw_lower in str(r.get("buoc", "")).lower()
+            or kw_lower in str(r.get("noi_dung", "")).lower()
+        ]
+        
+
