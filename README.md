@@ -1,6 +1,9 @@
 # sotayFPT_ktv
 # 📙 Sổ Tay Kỹ Thuật Viên (KTV) — FPT Telecom
 
+<img width="1920" height="1080" alt="{4FBB53DA-37F6-4CD0-A108-B4D7ACA5A429}" src="https://github.com/user-attachments/assets/15a9238c-9315-44d3-8a82-965c00cafde8" />
+
+
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![FPT Telecom](https://img.shields.io/badge/FPT_Telecom-Hue_Branch-F26F21?style=for-the-badge)
